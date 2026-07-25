@@ -1,0 +1,12 @@
+{
+  "name": "Kisan Dost Pakistan",
+  "short_name": "Kisan Dost",
+  "description": "AI-powered farming assistant for Pakistan — crops, weather, market prices, and disease scanning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7faf3",
+  "theme_color": "#1f7a3d",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "48x48", "type": "image/x-icon" }
+  ]
+}
