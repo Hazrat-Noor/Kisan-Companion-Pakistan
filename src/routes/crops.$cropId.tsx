@@ -37,7 +37,8 @@ export const Route = createFileRoute("/crops/$cropId")({
   component: CropDetail,
 });
 
-const SECTIONS: { key: keyof ReturnType<typeof cropById> & string; label: string }[] = [
+import type { Crop } from "@/lib/crops";
+const SECTIONS: { key: keyof Crop; label: string }[] = [
   { key: "sowing", label: "Sowing time" },
   { key: "harvest", label: "Harvesting time" },
   { key: "temperature", label: "Temperature" },
@@ -106,7 +107,7 @@ function CropDetail() {
               <MapPin className="h-3 w-3" /> Suitable provinces
             </div>
             <div className="mt-2 flex flex-wrap gap-1">
-              {crop.provinces.map((p) => (
+              {crop.provinces.map((p: string) => (
                 <span key={p} className="rounded-full bg-primary/10 px-2 py-0.5 text-xs text-primary">
                   {p}
                 </span>
@@ -118,7 +119,7 @@ function CropDetail() {
               <Sprout className="h-3 w-3" /> Key districts
             </div>
             <div className="mt-2 flex flex-wrap gap-1">
-              {crop.districts.map((d) => (
+              {crop.districts.map((d: string) => (
                 <span key={d} className="rounded-full bg-accent/15 px-2 py-0.5 text-xs text-accent-foreground">
                   {d}
                 </span>
