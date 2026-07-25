@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SchemesRouteImport } from './routes/schemes'
+import { Route as ScanRouteImport } from './routes/scan'
 import { Route as MarketRouteImport } from './routes/market'
 import { Route as CropsRouteImport } from './routes/crops'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CropsCropIdRouteImport } from './routes/crops.$cropId'
 import { Route as ApiWeatherRouteImport } from './routes/api/weather'
@@ -23,6 +25,11 @@ const SchemesRoute = SchemesRouteImport.update({
   path: '/schemes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScanRoute = ScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketRoute = MarketRouteImport.update({
   id: '/market',
   path: '/market',
@@ -31,6 +38,11 @@ const MarketRoute = MarketRouteImport.update({
 const CropsRoute = CropsRouteImport.update({
   id: '/crops',
   path: '/crops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,8 +73,10 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/crops': typeof CropsRouteWithChildren
   '/market': typeof MarketRoute
+  '/scan': typeof ScanRoute
   '/schemes': typeof SchemesRoute
   '/api/chat': typeof ApiChatRoute
   '/api/scan': typeof ApiScanRoute
@@ -71,8 +85,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/crops': typeof CropsRouteWithChildren
   '/market': typeof MarketRoute
+  '/scan': typeof ScanRoute
   '/schemes': typeof SchemesRoute
   '/api/chat': typeof ApiChatRoute
   '/api/scan': typeof ApiScanRoute
@@ -82,8 +98,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/crops': typeof CropsRouteWithChildren
   '/market': typeof MarketRoute
+  '/scan': typeof ScanRoute
   '/schemes': typeof SchemesRoute
   '/api/chat': typeof ApiChatRoute
   '/api/scan': typeof ApiScanRoute
@@ -94,8 +112,10 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/chat'
     | '/crops'
     | '/market'
+    | '/scan'
     | '/schemes'
     | '/api/chat'
     | '/api/scan'
@@ -104,8 +124,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/chat'
     | '/crops'
     | '/market'
+    | '/scan'
     | '/schemes'
     | '/api/chat'
     | '/api/scan'
@@ -114,8 +136,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/chat'
     | '/crops'
     | '/market'
+    | '/scan'
     | '/schemes'
     | '/api/chat'
     | '/api/scan'
@@ -125,8 +149,10 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
   CropsRoute: typeof CropsRouteWithChildren
   MarketRoute: typeof MarketRoute
+  ScanRoute: typeof ScanRoute
   SchemesRoute: typeof SchemesRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiScanRoute: typeof ApiScanRoute
@@ -142,6 +168,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SchemesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/scan': {
+      id: '/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof ScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/market': {
       id: '/market'
       path: '/market'
@@ -154,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/crops'
       fullPath: '/crops'
       preLoaderRoute: typeof CropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -206,8 +246,10 @@ const CropsRouteWithChildren = CropsRoute._addFileChildren(CropsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
   CropsRoute: CropsRouteWithChildren,
   MarketRoute: MarketRoute,
+  ScanRoute: ScanRoute,
   SchemesRoute: SchemesRoute,
   ApiChatRoute: ApiChatRoute,
   ApiScanRoute: ApiScanRoute,
@@ -216,3 +258,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
