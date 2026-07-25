@@ -9,38 +9,193 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SchemesRouteImport } from './routes/schemes'
+import { Route as ScanRouteImport } from './routes/scan'
+import { Route as MarketRouteImport } from './routes/market'
+import { Route as CropsRouteImport } from './routes/crops'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CropsCropIdRouteImport } from './routes/crops.$cropId'
+import { Route as ApiWeatherRouteImport } from './routes/api/weather'
+import { Route as ApiScanRouteImport } from './routes/api/scan'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 
+const SchemesRoute = SchemesRouteImport.update({
+  id: '/schemes',
+  path: '/schemes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScanRoute = ScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CropsRoute = CropsRouteImport.update({
+  id: '/crops',
+  path: '/crops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CropsCropIdRoute = CropsCropIdRouteImport.update({
+  id: '/$cropId',
+  path: '/$cropId',
+  getParentRoute: () => CropsRoute,
+} as any)
+const ApiWeatherRoute = ApiWeatherRouteImport.update({
+  id: '/api/weather',
+  path: '/api/weather',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiScanRoute = ApiScanRouteImport.update({
+  id: '/api/scan',
+  path: '/api/scan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/crops': typeof CropsRouteWithChildren
+  '/market': typeof MarketRoute
+  '/scan': typeof ScanRoute
+  '/schemes': typeof SchemesRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/scan': typeof ApiScanRoute
+  '/api/weather': typeof ApiWeatherRoute
+  '/crops/$cropId': typeof CropsCropIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/crops': typeof CropsRouteWithChildren
+  '/market': typeof MarketRoute
+  '/scan': typeof ScanRoute
+  '/schemes': typeof SchemesRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/scan': typeof ApiScanRoute
+  '/api/weather': typeof ApiWeatherRoute
+  '/crops/$cropId': typeof CropsCropIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/crops': typeof CropsRouteWithChildren
+  '/market': typeof MarketRoute
+  '/scan': typeof ScanRoute
+  '/schemes': typeof SchemesRoute
+  '/api/chat': typeof ApiChatRoute
+  '/api/scan': typeof ApiScanRoute
+  '/api/weather': typeof ApiWeatherRoute
+  '/crops/$cropId': typeof CropsCropIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/chat'
+    | '/crops'
+    | '/market'
+    | '/scan'
+    | '/schemes'
+    | '/api/chat'
+    | '/api/scan'
+    | '/api/weather'
+    | '/crops/$cropId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/chat'
+    | '/crops'
+    | '/market'
+    | '/scan'
+    | '/schemes'
+    | '/api/chat'
+    | '/api/scan'
+    | '/api/weather'
+    | '/crops/$cropId'
+  id:
+    | '__root__'
+    | '/'
+    | '/chat'
+    | '/crops'
+    | '/market'
+    | '/scan'
+    | '/schemes'
+    | '/api/chat'
+    | '/api/scan'
+    | '/api/weather'
+    | '/crops/$cropId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
+  CropsRoute: typeof CropsRouteWithChildren
+  MarketRoute: typeof MarketRoute
+  ScanRoute: typeof ScanRoute
+  SchemesRoute: typeof SchemesRoute
+  ApiChatRoute: typeof ApiChatRoute
+  ApiScanRoute: typeof ApiScanRoute
+  ApiWeatherRoute: typeof ApiWeatherRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/schemes': {
+      id: '/schemes'
+      path: '/schemes'
+      fullPath: '/schemes'
+      preLoaderRoute: typeof SchemesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan': {
+      id: '/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof ScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crops': {
+      id: '/crops'
+      path: '/crops'
+      fullPath: '/crops'
+      preLoaderRoute: typeof CropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +203,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crops/$cropId': {
+      id: '/crops/$cropId'
+      path: '/$cropId'
+      fullPath: '/crops/$cropId'
+      preLoaderRoute: typeof CropsCropIdRouteImport
+      parentRoute: typeof CropsRoute
+    }
+    '/api/weather': {
+      id: '/api/weather'
+      path: '/api/weather'
+      fullPath: '/api/weather'
+      preLoaderRoute: typeof ApiWeatherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/scan': {
+      id: '/api/scan'
+      path: '/api/scan'
+      fullPath: '/api/scan'
+      preLoaderRoute: typeof ApiScanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface CropsRouteChildren {
+  CropsCropIdRoute: typeof CropsCropIdRoute
+}
+
+const CropsRouteChildren: CropsRouteChildren = {
+  CropsCropIdRoute: CropsCropIdRoute,
+}
+
+const CropsRouteWithChildren = CropsRoute._addFileChildren(CropsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
+  CropsRoute: CropsRouteWithChildren,
+  MarketRoute: MarketRoute,
+  ScanRoute: ScanRoute,
+  SchemesRoute: SchemesRoute,
+  ApiChatRoute: ApiChatRoute,
+  ApiScanRoute: ApiScanRoute,
+  ApiWeatherRoute: ApiWeatherRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
