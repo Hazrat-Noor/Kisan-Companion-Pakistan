@@ -42,10 +42,15 @@ export function WeatherCard({ city = "Lahore,PK" }: { city?: string }) {
   }, [city]);
 
   if (error) {
+    const friendly = /invalid api key|401/i.test(error)
+      ? "Weather service is still activating. New OpenWeather API keys can take up to 2 hours to go live — please check back shortly."
+      : "We couldn't reach the weather service right now. Please try again in a moment.";
     return (
-      <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
-        <div className="mb-1 font-semibold text-foreground">Weather unavailable</div>
-        {error}
+      <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground shadow-card">
+        <div className="mb-1 flex items-center gap-2 font-semibold text-foreground">
+          <Cloud className="h-4 w-4 text-muted-foreground" /> Weather unavailable
+        </div>
+        {friendly}
       </div>
     );
   }
