@@ -351,31 +351,31 @@ The website is publicly accessible and works on modern desktop and mobile browse
 
 ## 🏠 Home Page
 
-> *(Insert Home Page Screenshot Here)*
+![Home Page](images/Home%20Page.png)
 
 ---
 
 ## 🤖 AI Farming Assistant
 
-> *(Insert AI Assistant Screenshot Here)*
+![AI Farming Assistant](images/AI%20Farming%20Assistant.png)
 
 ---
 
 ## 🌱 Crop Library
 
-> *(Insert Crop Library Screenshot Here)*
+![Crop Library](images/Crop%20Library.png)
 
 ---
 
 ## 🦠 Pest & Disease Library
 
-> *(Insert Pest & Disease Library Screenshot Here)*
+
 
 ---
 
 ## 💰 Market Prices
 
-> *(Insert Market Prices Screenshot Here)*
+![Government Agriculture Schemes](images/Government%20Agriculture%20Schemes.png)
 
 ---
 
