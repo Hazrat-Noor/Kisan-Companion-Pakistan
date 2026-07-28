@@ -38,7 +38,7 @@ The objective of this project is to demonstrate practical Artificial Intelligenc
 
 # 🚀 Live Application
 
-### 🌐 https://agri-mitra-plus.lovable.app/
+### 🌐 https://agro-smart-pak.lovable.app/
 
 > **Helping Pakistani farmers make smarter agricultural decisions using Artificial Intelligence.**
 
@@ -50,7 +50,7 @@ The objective of this project is to demonstrate practical Artificial Intelligenc
 
 **Public URL:**
 
-**https://agri-mitra-plus.lovable.app/**
+**https://agro-smart-pak.lovable.app/**
 
 The application is publicly available and can be accessed directly from any modern web browser. It is fully responsive and optimized for desktop, tablet, and mobile devices.
 
@@ -341,7 +341,7 @@ The application is deployed online and can be accessed using the following publi
 
 ## 🌐 Live Application
 
-**https://agri-mitra-plus.lovable.app/**
+**https://agro-smart-pak.lovable.app/**
 
 The website is publicly accessible and works on modern desktop and mobile browsers.
 
