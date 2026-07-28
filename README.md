@@ -357,31 +357,31 @@ The website is publicly accessible and works on modern desktop and mobile browse
 
 ## 🤖 AI Farming Assistant
 
-![AI Farming Assistant](images/AI%20Farming%20Assistant.png)
+![Kisan AI Chat](./images/Kisan%20AI%20Chat.png)
 
 ---
 
 ## 🌱 Crop Library
 
-![Crop Library](images/Crop%20Library.png)
+![Crop Library](images/Crops%20Library.png)
 
 ---
 
 ## 🦠 Irrigation Calculator
 
-
+![Irrigation Calculator](images/Irrigation%20Calculator.png)
 
 ---
 
 ## 💰 Market Prices
 
-![Government Agriculture Schemes](images/Government%20Agriculture%20Schemes.png)
+![Market Prices](images/Market%20Prices.png)
 
 ---
 
 ## 📢 Government Agriculture Schemes
 
-> *(Insert Government Schemes Screenshot Here)*
+![Government Schemes](images/Govt%20Schemes.png)
 
 ---
 
