@@ -367,7 +367,7 @@ The website is publicly accessible and works on modern desktop and mobile browse
 
 ---
 
-## 🦠 Pest & Disease Library
+## 🦠 Irrigation Calculator
 
 
 
